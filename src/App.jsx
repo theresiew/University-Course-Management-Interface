@@ -559,8 +559,20 @@ function App() {
                 </div>
                 <div className="divide-y divide-slate-200 bg-white">
                   {filteredCourses.length === 0 && !isLoadingCourses ? (
-                    <div className="px-4 py-10 text-center text-sm text-slate-500">
-                      No courses match your current filter yet.
+                    <div className="px-4 py-10 text-center">
+                      <p className="text-sm text-slate-500">
+                        No courses match your current filter yet.
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSearchTerm('')
+                          handleCreateMode()
+                        }}
+                        className="mt-4 rounded-2xl border border-brand-200 bg-brand-50 px-4 py-2.5 text-sm font-semibold text-brand-700 transition hover:bg-brand-100"
+                      >
+                        Clear filter and create a new course
+                      </button>
                     </div>
                   ) : null}
 
