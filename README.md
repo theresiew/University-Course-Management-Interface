@@ -68,6 +68,14 @@ This project is ready to deploy to any static host that supports Vite builds, su
 - Build command: `npm run build`
 - Publish directory: `dist`
 
+### Quick Netlify Deploy
+
+1. Push this repository to GitHub.
+2. Import the repository into Netlify.
+3. Keep the build command as `npm run build`.
+4. Keep the publish directory as `dist`.
+5. Add `VITE_API_BASE_URL` only if you want to override the default Railway backend URL.
+
 ## Notes
 
 - Authentication is required before course management actions are available.
