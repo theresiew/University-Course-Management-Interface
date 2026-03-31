@@ -39,6 +39,7 @@ function App() {
   const [pendingDelete, setPendingDelete] = useState(null)
   const [feedback, setFeedback] = useState(null)
   const [error, setError] = useState('')
+  const [lastSyncedAt, setLastSyncedAt] = useState('')
   const [isLoadingCourses, setIsLoadingCourses] = useState(false)
   const [isLoadingDetail, setIsLoadingDetail] = useState(false)
   const [isSubmittingForm, setIsSubmittingForm] = useState(false)
@@ -93,6 +94,7 @@ function App() {
     try {
       const nextCourses = await withAuthRetry((token) => getCourses(token))
       setCourses(nextCourses)
+      setLastSyncedAt(new Date().toISOString())
       setSelectedCourse((currentCourse) => {
         if (!currentCourse?.id) {
           return nextCourses[0] || null
@@ -498,6 +500,9 @@ function App() {
                   <h2 className="text-xl font-semibold text-ink-950">Course catalog</h2>
                   <p className="mt-1 text-sm text-slate-600">
                     Browse all courses returned by <span className="font-semibold">GET /api/courses</span>.
+                  </p>
+                  <p className="mt-2 text-xs font-medium uppercase tracking-[0.18em] text-slate-400">
+                    Last synced: {formatDate(lastSyncedAt)}
                   </p>
                 </div>
                 <button
