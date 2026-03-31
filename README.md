@@ -1,16 +1,74 @@
-# React + Vite
+# University Course Management Interface
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A professional frontend dashboard for a university supervisor to authenticate and manage the course catalog using the provided Student Management System backend.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Supervisor login using the provided test credentials
+- Protected dashboard experience
+- View all courses from `GET /api/courses`
+- Fetch a single course by ID from `GET /api/courses/{id}`
+- Create a course with `POST /api/courses`
+- Update a course with `PUT /api/courses/{id}`
+- Delete a course with `DELETE /api/courses/{id}`
+- Responsive Tailwind CSS interface with feedback messages and loading states
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- Vite
+- Tailwind CSS
 
-## Expanding the ESLint configuration
+## Backend API
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Swagger docs: `https://student-management-system-backend.up.railway.app/api-docs/#/`
+- Base URL: `https://student-management-system-backend.up.railway.app`
+
+## Test Credentials
+
+- Email: `admin@example.com`
+- Password: `adminpassword123`
+
+## Run Locally
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Start the development server:
+
+```bash
+npm run dev
+```
+
+3. Open the local URL shown in your terminal.
+
+## Environment Variables
+
+Create a `.env` file if you want to override the backend URL:
+
+```bash
+VITE_API_BASE_URL=https://student-management-system-backend.up.railway.app
+```
+
+An example file is already included as [.env.example](/c:/Users/USER/Desktop/University-course-management/.env.example).
+
+## Production Build
+
+```bash
+npm run build
+```
+
+## Deployment
+
+This project is ready to deploy to any static host that supports Vite builds, such as Netlify or Vercel.
+
+- Build command: `npm run build`
+- Publish directory: `dist`
+
+## Notes
+
+- Authentication is required before course management actions are available.
+- The app stores the supervisor session in local storage and retries protected requests with the refresh token when possible.
